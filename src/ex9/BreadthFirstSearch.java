@@ -4,12 +4,12 @@ import java.util.*;
 
 public class BreadthFirstSearch {
     private class Node {
-        int label;
+        int key;
         List<Node> children = new ArrayList<>();
         boolean isVisited;
 
-        public Node(int label) {
-            this.label = label;
+        public Node(int key) {
+            this.key = key;
             this.isVisited = false;
         }
 
@@ -24,7 +24,7 @@ public class BreadthFirstSearch {
 
         @Override
         public String toString() {
-            return String.valueOf(label);
+            return String.valueOf(key);
         }
     }
 
@@ -53,7 +53,7 @@ public class BreadthFirstSearch {
         Node node = bfs.root;
         node.isVisited = true;
         bfs.queue.offer(node);
-        System.out.println(node.label);
+        System.out.println(node.key);
 
         while (!bfs.queue.isEmpty()) {
             Node target = bfs.queue.peek();

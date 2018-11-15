@@ -4,16 +4,16 @@ import java.util.*;
 
 public class DepthFirstSearch {
     private class Node {
-        int label;
+        int key;
         List<Node> children = new ArrayList<>();
         boolean isVisited;
 
-        public Node(int label) {
-            this.label = label;
+        public Node(int key) {
+            this.key = key;
             this.isVisited = false;
         }
 
-        public Node getNotVisitedChild() {
+        Node getNotVisitedChild() {
             for(Node child : children){
                 if(!child.isVisited){
                     return child;
@@ -24,7 +24,7 @@ public class DepthFirstSearch {
 
         @Override
         public String toString() {
-            return String.valueOf(label);
+            return String.valueOf(key);
         }
     }
 
@@ -53,7 +53,7 @@ public class DepthFirstSearch {
         Node rootNode = dfs.root;
         rootNode.isVisited = true;
         dfs.stack.push(rootNode);
-        System.out.println(rootNode.label);
+        System.out.println(rootNode.key);
 
         while (!dfs.stack.isEmpty()) {
             Node target = dfs.stack.peek();

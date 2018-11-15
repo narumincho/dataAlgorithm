@@ -1,25 +1,22 @@
 package ex9;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
+import java.util.List;
 
 public class Dijkstra {
-    final static int INFINITY = Integer.MAX_VALUE; // これを無限大とする
+    private final static int INFINITY = Integer.MAX_VALUE; // これを無限大とする
 
     private class Node {
         int key;
         int label;
         boolean isFixed;
-        ArrayList<Edge> edges = new ArrayList<Edge>();
+        List<Edge> edgeList = new ArrayList<>();
 
         public Node(int key) {
             this.key = key;
             this.label = INFINITY;
             this.isFixed = false;
-        }
-
-        public void addEdge(Edge edge) {
-            edges.add(edge);
         }
 
         public void setLabelIfLessThanBefore(int newLabel) {
@@ -33,7 +30,7 @@ public class Dijkstra {
         Node to;    // 隣接するノード
         int weight; // エッジの重み
 
-        public Edge(Node to, int weight) {
+        Edge(Node to, int weight) {
             this.to = to;
             this.weight = weight;
         }
@@ -49,19 +46,33 @@ public class Dijkstra {
         Node node4 = new Node(4);
         Node node5 = new Node(5);
 
-        node1.addEdge(new Edge(node2, 20));
-        node1.addEdge(new Edge(node3, 10));
-        node1.addEdge(new Edge(node4, 15));
-        node2.addEdge(new Edge(node1, 20));
-        node2.addEdge(new Edge(node4, 10));
-        node3.addEdge(new Edge(node1, 10));
-        node3.addEdge(new Edge(node4, 20));
-        node3.addEdge(new Edge(node5, 10));
-        node4.addEdge(new Edge(node1, 15));
-        node4.addEdge(new Edge(node2, 10));
-        node4.addEdge(new Edge(node3, 20));
-        node5.addEdge(new Edge(node3, 10));
-        node5.addEdge(new Edge(node4, 20));
+        node1.edgeList = Arrays.asList(
+                new Edge(node2, 20),
+                new Edge(node3, 10),
+                new Edge(node4, 15)
+        );
+
+        node2.edgeList = Arrays.asList(
+                new Edge(node1, 20),
+                new Edge(node4, 10)
+        );
+
+        node3.edgeList = Arrays.asList(
+                new Edge(node1, 10),
+                new Edge(node4, 20),
+                new Edge(node5, 10)
+        );
+
+        node4.edgeList = Arrays.asList(
+                new Edge(node1, 15),
+                new Edge(node2, 10),
+                new Edge(node3, 20)
+        );
+
+        node5.edgeList = Arrays.asList(
+                new Edge(node3, 10),
+                new Edge(node4, 20)
+        );
 
         nodes.add(node1);
         nodes.add(node2);
@@ -77,7 +88,7 @@ public class Dijkstra {
         Dijkstra graph = new Dijkstra();
         do {
             graph.start.isFixed = true;
-            for (Edge edge : graph.start.edges) {
+            for (Edge edge : graph.start.edgeList) {
                 edge.to.setLabelIfLessThanBefore(graph.start.label + edge.weight);
             }
 
