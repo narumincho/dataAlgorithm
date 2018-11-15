@@ -1,0 +1,34 @@
+データ構造とアルゴリズム演習 第5回 レポート[2]
+17FI082 鳴海 秀人 2018/10/11
+
+実行結果
+
+Aliceを追加
+[Alice]
+Bobを追加
+[Alice, Bob]
+Charlieを追加
+[Alice, Bob, Charlie]
+Dianaを追加
+[Alice, Bob, Charlie, Diana]
+Elmoを追加
+[Alice, Bob, Charlie, Diana, Elmo]
+Fredを追加
+[Alice, Bob, Charlie, Diana, Elmo, Fred]
+Aliceを削除
+[Bob, Charlie, Diana, Elmo, Fred]
+Bobを削除
+[Charlie, Diana, Elmo, Fred]
+Charlieを削除
+[Diana, Elmo, Fred]
+Dianaを削除
+[Elmo, Fred]
+Elmoを削除
+[Fred]
+Fredを削除
+[]
+
+要素の追加と削除に関するキューの動作についての説明
+
+最初に追加したものが最初に削除され、
+最後に追加したものが最後に削除される。
