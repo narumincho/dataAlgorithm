@@ -53,7 +53,7 @@ public class DepthFirstSearch {
         Node rootNode = dfs.root;
         rootNode.isVisited = true;
         dfs.stack.push(rootNode);
-        System.out.println(rootNode.key);
+        System.out.println(rootNode);
 
         while (!dfs.stack.isEmpty()) {
             Node target = dfs.stack.peek();

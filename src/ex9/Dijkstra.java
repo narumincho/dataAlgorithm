@@ -37,7 +37,7 @@ public class Dijkstra {
     }
 
     Node start;
-    ArrayList<Node> nodes = new ArrayList<Node>();
+    List<Node> nodes;
 
     public Dijkstra() {
         Node node1 = new Node(1);
@@ -74,12 +74,7 @@ public class Dijkstra {
                 new Edge(node4, 20)
         );
 
-        nodes.add(node1);
-        nodes.add(node2);
-        nodes.add(node3);
-        nodes.add(node4);
-        nodes.add(node5);
-
+        nodes = Arrays.asList(node1, node2, node3, node4, node5);
         start = nodes.get(0);
         start.label = 0;
     }
