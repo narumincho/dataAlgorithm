@@ -81,27 +81,31 @@ public class Dijkstra {
 
     public static void main(String[] args) {
         Dijkstra graph = new Dijkstra();
-        do {
-            graph.start.isFixed = true;
-            for (Edge edge : graph.start.edgeList) {
-                edge.to.setLabelIfLessThanBefore(graph.start.label + edge.weight);
+        Node targetNode = graph.start;
+        while (true) {
+            targetNode.isFixed = true;
+            for (Edge edge : targetNode.edgeList) {
+                edge.to.setLabelIfLessThanBefore(targetNode.label + edge.weight);
             }
 
             Node minNode = null;
-            boolean isFoundNotFixed = false;
+            boolean isMinNodeNull = true;
             for (Node node : graph.nodes) {
-                if (!isFoundNotFixed && !node.isFixed) {
+                if(node.isFixed){
+                    continue;
+                }
+                if (isMinNodeNull) {
                     minNode = node;
-                    isFoundNotFixed = true;
-                } else if (!node.isFixed && node.label < minNode.label) {
+                    isMinNodeNull = false;
+                } else if (node.label < minNode.label) {
                     minNode = node;
                 }
             }
-            if (minNode == null) {
+            if (isMinNodeNull) {
                 break;
             }
-            graph.start = minNode;
-        } while (true);
+            targetNode = minNode;
+        }
 
         for (Node node : graph.nodes) {
             System.out.println("Node" + node.key + ": " + node.label);
