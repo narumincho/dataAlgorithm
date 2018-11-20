@@ -89,19 +89,19 @@ public class Dijkstra {
             }
 
             Node minNode = null;
-            boolean isMinNodeNull = true;
             for (Node node : graph.nodes) {
                 if(node.isFixed){
                     continue;
                 }
-                if (isMinNodeNull) {
+                if (minNode == null) {
                     minNode = node;
-                    isMinNodeNull = false;
-                } else if (node.label < minNode.label) {
+                    continue;
+                }
+                if (node.label < minNode.label) {
                     minNode = node;
                 }
             }
-            if (isMinNodeNull) {
+            if (minNode == null) {
                 break;
             }
             targetNode = minNode;
